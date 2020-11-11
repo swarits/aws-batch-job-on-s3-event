@@ -8,7 +8,7 @@ Resources:
   function:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: target/s3-java-1.0-SNAPSHOT.jar
+      CodeUri: target/aws-batch-job-on-s3-event-1.0-SNAPSHOT.jar
       Handler: com.hsbc.wealth.dcc.batchjobs.handler.Handler::handleRequest
       Runtime: java8
       Description: Java function
@@ -20,7 +20,7 @@ Resources:
         - AWSLambdaReadOnlyAccess
         - AWSXrayWriteOnlyAccess
         - AWSLambdaVPCAccessExecutionRole
-        - AmazonS3FullAccess
+        - AWSBatchFullAccess
       Tracing: Active
       Events:
         s3Notification:
