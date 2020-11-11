@@ -9,7 +9,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: target/aws-batch-job-on-s3-event-1.0-SNAPSHOT.jar
-      Handler: com.hsbc.wealth.dcc.batchjobs.handler.Handler::handleRequest
+      Handler: batchjobs.handler.Handler::handleRequest
       Runtime: java8
       Description: Java function
       MemorySize: 512

@@ -1,4 +1,4 @@
-package com.hsbc.wealth.dcc.batchjobs.handler;
+package batchjobs.handler;
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.batch.AWSBatch;
