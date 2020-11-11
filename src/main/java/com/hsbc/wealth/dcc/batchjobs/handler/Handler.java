@@ -21,10 +21,10 @@ import org.slf4j.LoggerFactory;
 public class Handler implements RequestHandler<S3Event, String> {
 	Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	private static final Logger logger = LoggerFactory.getLogger(Handler.class);
-	private static final String JOB_PREFIX = "JOB-";
 	private static final String JOB_PARAM_FILE_NAME = "fileName";
 	private static final String ENV_VAR_QUEUE = "JOB_QUEUE";
 	private static final String ENV_VAR_DEFINITION = "JOB_DEFINITION";
+	private static final String ENV_VAR_JOB_NAME = "JOB_NAME";
 
 	@Override
 	public String handleRequest(S3Event s3event, Context context) {
@@ -35,7 +35,7 @@ public class Handler implements RequestHandler<S3Event, String> {
 		String srcBucket = record.getS3().getBucket().getName();
 		String fileKey = record.getS3().getObject().getUrlDecodedKey();
 
-		String jobName = JOB_PREFIX + fileKey;
+		String jobName = System.getenv(ENV_VAR_JOB_NAME);
 		String jobQueue = System.getenv(ENV_VAR_QUEUE);
 		String jobDef = System.getenv(ENV_VAR_DEFINITION);
 
